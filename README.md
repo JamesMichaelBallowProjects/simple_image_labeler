@@ -7,7 +7,7 @@ SIL is a very simple tool that is made to iterate over images quickly to assign 
 SIL was created because I needed to have a means of manually labeling images that would expedite the labeling process, minimize labeling errors, and to eliminate the administrative steps of clicking on each image to label it. I used a program very similar to this one for my master's thesis, but I have since attempted to make it better for others to use.
 
 
-<img src="" alt="gif here of labeler" width=200>
+<img src="./img/demo-use.gif" alt="gif here of labeler">
 
 # How to Use
 ## Execution
@@ -28,24 +28,27 @@ Here is what will happen:
 ## Input Parameters
 #### Required
 ```
---input-folder
---output-folder
+--input-folder (full path to folder with images)
+--output-folder (full path to folder for outputs)
 ```
 #### Optional
 ```
---label-preview-color
+--label-preview-color | 
 --label-preview-size
 ```
 
 ## Use
 1. Initiate the program.
-2. A window will pop up containing the first image inside of `--input-folder`.
-    > __NOTE__: Look at your machine's task bar to see if the window is open, but not active on your screen. It may contain the python logo as the task item on your task bar.
+2. A window will pop up containing the first image inside of `--input-folder`. 
+    > <img src="./img/demo-image-window-open.PNG" width=200 alt="gif here of labeler">
 3. Make the window active by either clicking on it (don't click on your command line).
-4. Look at the image being shown in the window, and use your keyboard to type a label for the image. As you type the label, it will be previewed on TOP of the image in a discernable color.
+    > __NOTE__: Look at your machine's task bar to see if the window is open, but not active on your screen. It may contain the python logo as the task item on your task bar.
+    > <img src="./img/windows-task-bar-with-program.PNG" width=300 alt="gif here of labeler">
+3. Look at the image being shown in the window, and use your keyboard to type a label for the image. As you type the label, it will be previewed on TOP of the image in a discernable color.
     >__NOTE__: this is just a preview, and the text will not be printed on *top* of your image, it's just to help you see what you are trying to label it.
 5. Using the special character to save the image, you can save the image and move on immediately to the next image.
 6. You can skip an image and you can also quit labeling immediately by pressing special keys for each of these actions.
+7. If you notice that you have pressed the correct special button to perform an action, but nothing happens, you should take a look at your command line because it's probably giving you a warning and it's looking for you to respond.
 
 That's it! It's that __*simple*__!
 
@@ -61,5 +64,6 @@ Special Keys for Execution
 ```
 Remove Last Character (Delete) --> [/]
 Accept Label for Image (Save)  --> [`] (same btn as ~)
+Skip Image (Don't Label It)    --> [,]
 Immediately Stop (Quit)        --> [=]
 ```

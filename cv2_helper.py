@@ -1,6 +1,16 @@
 import os
 import cv2
 
+def hex_to_rgb(hex_code):
+    if hex_code == "":
+        return ""
+    hex_code = hex_code.lstrip('#')
+    red = int(hex_code[0:2], 16)
+    green = int(hex_code[2:4], 16)
+    blue = int(hex_code[4:6], 16)
+
+    # cv uses BGR order
+    return (blue, green, red)
 
 def get_frame(
     image_path:str
@@ -20,19 +30,30 @@ def get_key_in_render():
 
 def print_label_to_image(
     image: object,
-    text_to_print: str
+    text_to_print: str,
+    custom_text_color: str = ''
 ) -> None:
 
     # initialize
+    # --- fixed text items
     font = cv2.FONT_HERSHEY_SIMPLEX
     coord = (50,50)
     fontScale = 1
+    thickness = 2
+    lineType = cv2.LINE_AA
+
+    # --- set color
     color = {
         'green': (27, 245, 0),
         'magenta': (230, 34, 203)
     }
-    thickness = 2
-    lineType = cv2.LINE_AA
+    if custom_text_color:
+        if custom_text_color[0] == "#":
+            textColor = hex_to_rgb(custom_text_color)
+        else:
+            textColor = color[custom_text_color]
+    else:
+        textColor = color['magenta']
 
     # print text to image
     cv2.putText(
@@ -41,7 +62,7 @@ def print_label_to_image(
         coord,
         font,
         fontScale,
-        color['magenta'],
+        textColor,
         thickness,
         lineType
     )

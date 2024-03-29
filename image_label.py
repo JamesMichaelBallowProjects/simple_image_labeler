@@ -4,8 +4,8 @@ import cv2
 import cv2_helper as CVHelper
 import files as Files
 
-outFolder = "../test-images/out"
-inFolder = "../test-images/"
+outFolder = "./test-images/out"
+inFolder = "./test-images/"
 
 # check input and output folders
 Files.check_input_folder_exists(folder_path=inFolder)
@@ -38,7 +38,11 @@ for imageName in Files.grab_next_image(inFolder):
         elif key == ord("/"):
             buffer = buffer[:-1]
             imageMatShow = imageMat.copy()
-            CVHelper.print_label_to_image(image=imageMatShow, text_to_print=buffer)
+            CVHelper.print_label_to_image(
+                image=imageMatShow,
+                text_to_print=buffer,
+                custom_text_color='#30E5CD'
+            )
 
         # --- save label and move on to next image
         elif key == ord("`"):
@@ -60,7 +64,10 @@ for imageName in Files.grab_next_image(inFolder):
         # --- keys to type out label
         elif key != 255:  # 255 is "a special character to keep key non-empty each iteration"
             buffer += chr(key)
-            CVHelper.print_label_to_image(image=imageMatShow, text_to_print=buffer)
-
+            CVHelper.print_label_to_image(
+                image=imageMatShow,
+                text_to_print=buffer,
+                custom_text_color='#30E5CD'
+            )
     # close image window
     CVHelper.close_preview()
