@@ -1,6 +1,3 @@
-<img src="" alt="image here of labeler" width=200>
-
-
 # Simple Image Labeler (SIL)
 SIL is a very simple tool that is made to iterate over images quickly to assign a label to them. For now, assigning a label means renaming the image with a string that signifies what kind of image it is.
 
@@ -33,22 +30,22 @@ Here is what will happen:
 ```
 #### Optional
 ```
---label-preview-color | 
---label-preview-size
+--label-preview-color (hex color code)
+--label-preview-size (enum: 'tiny' | 'small' | 'medium' | 'large')
 ```
 
 ## Use
 1. Initiate the program.
-2. A window will pop up containing the first image inside of `--input-folder`. 
+2. A window will pop up containing the first image inside of `--input-folder`.
     > <img src="./img/demo-image-window-open.PNG" width=200 alt="gif here of labeler">
-3. Make the window active by either clicking on it (don't click on your command line).
+3. Make the window active by either clicking on it (don't click on your terminal).
     > __NOTE__: Look at your machine's task bar to see if the window is open, but not active on your screen. It may contain the python logo as the task item on your task bar.
     > <img src="./img/windows-task-bar-with-program.PNG" width=300 alt="gif here of labeler">
 3. Look at the image being shown in the window, and use your keyboard to type a label for the image. As you type the label, it will be previewed on TOP of the image in a discernable color.
     >__NOTE__: this is just a preview, and the text will not be printed on *top* of your image, it's just to help you see what you are trying to label it.
 5. Using the special character to save the image, you can save the image and move on immediately to the next image.
 6. You can skip an image and you can also quit labeling immediately by pressing special keys for each of these actions.
-7. If you notice that you have pressed the correct special button to perform an action, but nothing happens, you should take a look at your command line because it's probably giving you a warning and it's looking for you to respond.
+7. If you notice that you have pressed the correct special button to perform an action, but nothing happens, you should take a look at your terminal because it's probably giving you a warning and it's looking for you to respond.
 
 That's it! It's that __*simple*__!
 
@@ -57,7 +54,7 @@ That's it! It's that __*simple*__!
 Allowable Keys for a label
 ```ascii
 Alphabet - [A-Za-z]
-Symbols - [~!@#$%^&*()_+]
+Symbols - [all symbols acceptable in filenames]
 ```
 
 Special Keys for Execution
