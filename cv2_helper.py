@@ -25,7 +25,6 @@ def scale_with_aspect(
     h, w, _ = image_mat_object.shape
     newW = max(500,w)
     newH = int(h * (newW/w))
-    print(newW, int(newH))
     return cv2.resize(
         image_mat_object,
         (newW, newH)
