@@ -43,17 +43,10 @@ def print_label_to_image(
     lineType = cv2.LINE_AA
 
     # --- set color
-    color = {
-        'green': (27, 245, 0),
-        'magenta': (230, 34, 203)
-    }
-    if custom_text_color:
-        if custom_text_color[0] == "#":
-            textColor = hex_to_rgb(custom_text_color)
-        else:
-            textColor = color[custom_text_color]
+    if custom_text_color and custom_text_color[0] == "#":
+        textColor = hex_to_rgb(custom_text_color)
     else:
-        textColor = color['magenta']
+        textColor = (230, 34, 203)
 
     # print text to image
     cv2.putText(

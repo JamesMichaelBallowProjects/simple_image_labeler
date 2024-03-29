@@ -1,8 +1,15 @@
 import os, sys
 import cv2
 
+from sil_parser import Parser
 import cv2_helper as CVHelper
 import files as Files
+
+
+# global
+PARSER = Parser(sys.argv[1:])
+print(PARSER.args)
+sys.exit()
 
 outFolder = "./test-images/out"
 inFolder = "./test-images/"
