@@ -1,6 +1,13 @@
 import os
 import cv2
 
+LABEL_SIZE_DECODER = {
+    "tiny": 1,
+    "small": 2,
+    "medium": 3,
+    "large": 4
+}
+
 def hex_to_rgb(hex_code):
     if hex_code == "":
         return ""
@@ -11,6 +18,18 @@ def hex_to_rgb(hex_code):
 
     # cv uses BGR order
     return (blue, green, red)
+
+def scale_with_aspect(
+    image_mat_object: object
+) -> object:
+    h, w, _ = image_mat_object.shape
+    newW = max(500,w)
+    newH = int(h * (newW/w))
+    print(newW, int(newH))
+    return cv2.resize(
+        image_mat_object,
+        (newW, newH)
+    )
 
 def get_frame(
     image_path:str
@@ -31,16 +50,22 @@ def get_key_in_render():
 def print_label_to_image(
     image: object,
     text_to_print: str,
-    custom_text_color: str = ''
+    custom_text_color: str = '',
+    custom_text_size: str = 'small'
 ) -> None:
 
     # initialize
     # --- fixed text items
-    font = cv2.FONT_HERSHEY_SIMPLEX
+    font = cv2.FONT_HERSHEY_PLAIN
     coord = (50,50)
-    fontScale = 1
-    thickness = 2
+    thickness = 1
     lineType = cv2.LINE_AA
+
+    # --- set size
+    if custom_text_size:
+        textSize = LABEL_SIZE_DECODER[custom_text_size]
+    else:
+        textSize = 1
 
     # --- set color
     if custom_text_color and custom_text_color[0] == "#":
@@ -54,7 +79,7 @@ def print_label_to_image(
         text_to_print,
         coord,
         font,
-        fontScale,
+        textSize,
         textColor,
         thickness,
         lineType

@@ -17,7 +17,6 @@ class Parser:
         type=pathlib.Path,
         action="store",
         required=True,
-        nargs=1,
         help=":\033[96mfull path to folder\033[0m where to-be-processed images are stored."
     )
     parser.add_argument(
@@ -25,7 +24,6 @@ class Parser:
         type=pathlib.Path,
         action="store",
         required=True,
-        nargs=1,
         help=":\033[96mfull path to folder\033[0m where output images are stored."
     )
 
